@@ -83,7 +83,7 @@ input::placeholder {
     background-color: #162327;
     border-radius: 1.8rem;
     
-    padding: 2.5rem;
+    padding: 1.3rem;
 }
 #weather-data h2 {
     display: flex;
