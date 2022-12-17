@@ -11,6 +11,18 @@ body {
     align-items: center;
     height: 100vh;
     flex-direction: column;
+    
+}
+
+.imagem-fundo {
+    width: 100vw;
+    height: 100vh;
+    background-color: #027294;
+    position: absolute;
+    z-index: -2;
+    opacity: 0.1;
+    background-position: center;
+    background-size: cover;
 }
 #logo {
     height: 3rem;
@@ -135,4 +147,9 @@ input::placeholder {
     border-right: 1px solid #fff;
     margin: 0.6rem;
     padding: 0.6rem;
+}
+
+#error-message {
+    padding: 2rem;
+    padding-top: 0;
 }

@@ -1,5 +1,6 @@
 const apiKey = "967417c5336149f99f823e96888d2155";
 const apiCoutryURL = "https://countryflagsapi.com/png/";
+const apiUnsplash = "https://source.unsplash.com/1600x900/?"
 
 const cityInput = document.querySelector("#city-input");
 const searchBtn = document.querySelector("#search");
@@ -13,6 +14,8 @@ const umidityElement = document.querySelector("#umidity span");
 const windElement = document.querySelector("#wind span");
 const weatherContainer = document.querySelector("#weather-data");
 
+const errorMessageContainer = document.querySelector("#error-message");
+
 const getWeatherData = async (city) => {
     const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=pt_br`;
 
@@ -21,9 +24,23 @@ const getWeatherData = async (city) => {
 
     return data;
 };
+const showErrorMessage = () => {
+    errorMessageContainer.classList.remove("hide")
+  }
 
+  const hideInformation = () => {
+    errorMessageContainer.classList.add("hide")
+    weatherContainer.classList.add("hide")
+  }
+  
 const showWeatherData = async (city) => {
+    hideInformation();
    const data = await getWeatherData(city);
+
+   if (data.cod === "404") {
+    showErrorMessage()
+    return;
+}
 
    cityElement.innerText = data.name;
    tempElement.innerText = parseInt(data.main.temp);
@@ -32,7 +49,7 @@ const showWeatherData = async (city) => {
     countryElement.setAttribute("src", apiCoutryURL + data.sys.country);
     umidityElement.innerHTML = `${data.main.humidity}%`
     windElement.innerHTML = `${data.wind.speed}km/h`;
-
+    document.querySelector(".imagem-fundo").style.backgroundImage = `url("${apiUnsplash + city}")`;
    weatherContainer.classList.remove("hide");
     
 };
