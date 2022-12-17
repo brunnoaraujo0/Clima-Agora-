@@ -78,11 +78,12 @@ input::placeholder {
 
 #weather-data {
     margin-top: 1.5rem;
-    padding-top: 1.5rem;
+   
     text-align: center;
     background-color: #162327;
     border-radius: 1.8rem;
-    padding-bottom: 1rem;
+    
+    padding: 2.5rem;
 }
 #weather-data h2 {
     display: flex;
